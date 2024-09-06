@@ -7,6 +7,9 @@ branding:
   icon: globe
 
 inputs:
+  token:
+    description: The api token to use for authentication
+    required: true
   project:
     description: The name or ID of the project to deploy
     required: true
