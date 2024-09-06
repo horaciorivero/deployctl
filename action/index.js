@@ -17,8 +17,8 @@ const ORIGIN = process.env.DEPLOY_API_ENDPOINT ?? "https://dash.deno.com";
 async function main() {
   const projectId = core.getInput("project", { required: true });
   const entrypoint = core.getInput("entrypoint", { required: true });
+  const apiToken = core.getInput("token",  { required: true });
   const importMap = core.getInput("import-map", {});
-  const apiToken = core.getInput("token", {});
   const include = core.getMultilineInput("include", {});
   const exclude = core.getMultilineInput("exclude", {});
   const cwd = resolve(process.cwd(), core.getInput("root", {}));
@@ -160,6 +160,7 @@ async function main() {
 try {
   await main();
 } catch (error) {
+  core.setOutput(error);
   if (error instanceof APIError) {
     core.setFailed(error.toString());
   } else {

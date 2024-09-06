@@ -4061,6 +4061,10 @@ class API {
                 ["x-deploy-sudo"]: sudo
             } : {}
         };
+        
+        this.#config.logger.notice(authorization)
+        this.#config.logger.notice(url)
+
         let res = await fetch(url, {
             method,
             headers,
