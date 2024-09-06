@@ -160,7 +160,7 @@ async function main() {
 try {
   await main();
 } catch (error) {
-  core.setOutput(error);
+  core.debug(error);
   if (error instanceof APIError) {
     core.setFailed(error.toString());
   } else {
